@@ -81,3 +81,4 @@ npm install eslint -g
 eslint --init
 
 ### styled-components ###
+npm install --save styled-components
