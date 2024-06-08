@@ -72,6 +72,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### init project ###
 npx create-react-app tic-tac-toe
 
+### start project ###
+npm install
+npm start
+
 ### eslint ###
 npm install eslint -g
 eslint --init
