@@ -82,3 +82,6 @@ eslint --init
 
 ### styled-components ###
 npm install --save styled-components
+
+### code ref ###
+https://github.com/TimingJL/
