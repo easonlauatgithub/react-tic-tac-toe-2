@@ -1,6 +1,23 @@
-const RestartButton = () => {
+import styled from 'styled-components';
+
+const StyledRestartButton = styled.div`
+    background: ${(props) => props.theme.restartButton.normal};
+    color: ${(props) => props.theme.color};
+    &:hover {
+    background: ${(props) => props.theme.restartButton.hover};
+  }
+  &:active {
+    background: ${(props) => props.theme.restartButton.active};
+  }
+`;
+
+const RestartButton = ({onClick}) => {
     return (
-        <div className="restartButton">RestartButton</div>
+        <StyledRestartButton
+        onClick={onClick}
+        className="restartButton">
+            RestartButton
+        </StyledRestartButton>
     );
   };
   

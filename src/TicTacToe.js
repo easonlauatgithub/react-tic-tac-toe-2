@@ -60,7 +60,7 @@ const getJudgementInfo = (playersStepsMap)=>{
   let winnerId = 0;
   let winnerStepsList = [];
   let lastStepsToWin = {...defaultPlayersStepsMap};
-  // for each player
+  // loop all players
   const playerIds = Object.keys(playersStepsMap);
   playerIds.forEach((playerId)=>{
     const playerSteps = playersStepsMap[playerId]
@@ -121,7 +121,7 @@ const TicTacToe = () => {
   const handleClickSquare = (squareId)=>{
     // check if square not clicked
     const isSquareEnable = isSquareNotClicked(squareId);
-    if(isSquareEnable){
+    if(isSquareEnable && !hasWinner){
     // record the clicked, by playerId 1 or -1
     const newPlayersStepsMap = {
       ...playersStepsMap,
@@ -137,18 +137,35 @@ const TicTacToe = () => {
     setJudgementInfo(getJudgementInfo(newPlayersStepsMap));
     }
   }
+  const handleResetAllState = ()=>{
+    console.log("handleResetAllState");
+    setPlayerId(PLAYERS_ID[0]);
+    setPlayersStepsMap(defaultPlayersStepsMap);
+    setJudgementInfo({
+      winnerId: 0,
+      winnerStepsList: [],
+      lastStepsToWin: {}   
+    });
+  }
   const isWinnerStep = (winnerId != 0);
   return (
     <TicTacToeGame className="background">
         <div className="container">
-            <Information/>
+            <Information
+            playerId={playerId}
+            isGameEndedInTie={isGameEndedInTie}
+            hasWinner={hasWinner}
+            winnerId={winnerId}
+            />
             <Squares
             handleClickSquare = {handleClickSquare}
             playersStepsMap={playersStepsMap}
             winnerSteps={winnerSteps}
             />
             <div className="actions">
-                <RestartButton/>
+                <RestartButton
+                onClick = {handleResetAllState}
+                />
                 <SwitchMode/>
             </div>
         </div>
